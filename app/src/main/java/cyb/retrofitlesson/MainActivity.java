@@ -11,16 +11,23 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.greendao.UserInfoDao;
 import com.jakewharton.rxbinding.view.RxView;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cyb.bean.Constant;
+import cyb.GreenDaoManager;
 import cyb.bean.Login;
-import cyb.bean.NetWorkUtils;
 import cyb.bean.Result;
+import cyb.bean.UserInfo;
+import cyb.comm.Constant;
+import cyb.cookisutils.NetWorkUtils;
+import cyb.servers.GetUserinfoServers;
+import cyb.servers.LoginServers;
+import cyb.utils.Util;
 import retrofit2.Retrofit;
 import rx.Observable;
 import rx.Subscription;
@@ -111,7 +118,57 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**保存到数据库**/
     private void saveUserinfoToDB(Result<UserInfo> userinfo) {
 
     }
+
+
+
+
+    private UserInfoDao getUserInfoDao(){
+       return GreenDaoManager.getInstance().getmDaoSession().getUserInfoDao();
+    }
+
+    private void insertUserinfo(UserInfo userInfo){
+        getUserInfoDao().insert(userInfo);
+    }
+
+    public void deleteAllUserinfo(){
+        getUserInfoDao().deleteAll();
+    }
+    public void deleteUseriInfo(UserInfo userInfo){
+        getUserInfoDao().delete(userInfo);
+    }
+    public void saveListUserinfo(final List<UserInfo> list){
+        if (list==null||list.isEmpty()){
+            return;
+        }
+        getUserInfoDao().getSession().runInTx(new Runnable() {
+            @Override
+            public void run() {
+                for (int i=0;i<list.size();i++){
+                    getUserInfoDao().insertOrReplace(list.get(i));
+                }
+            }
+        });
+    }
+
+    public List<UserInfo> queryN(String where,String...params){
+        return getUserInfoDao().queryRaw(where,params);
+    }
+    private void querydataBy() {////查询条件
+       /* Query<User> nQuery = getUserInfoDao().queryBuilder()
+//                .where(UserDao.Properties.Name.eq("user1"))//.where(UserDao.Properties.Id.notEq(999))
+                *//*.orderAsc(UserInfoDao.Properties.State)*//*//.limit(5)//orderDesc
+                .build();
+        List<User> users = nQuery.list();
+        Log.i("tag", "当前数量：" + users.size());
+        for (int i = 0; i < users.size(); i++) {
+            Log.i("tag", "结果：" + users.get(i).getId() + "," + users.get(i).getName() + "," + users.get(i).getAge() + "," + users.get(i).getIsBoy() + ";");
+        }*/
+
+
+    }
+
 }

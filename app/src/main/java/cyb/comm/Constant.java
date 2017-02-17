@@ -1,6 +1,6 @@
-package cyb.bean;
+package cyb.comm;
 
-import cyb.retrofitlesson.UserInfo;
+import cyb.bean.UserInfo;
 
 /**
  * Created by user on 2017/2/16.

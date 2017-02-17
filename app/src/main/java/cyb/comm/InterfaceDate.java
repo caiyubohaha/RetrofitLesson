@@ -1,4 +1,4 @@
-package cyb.retrofitlesson;
+package cyb.comm;
 
 public class InterfaceDate {
     public static final  String ROOT_URL = "http://101.200.182.221:80/";//ip地址

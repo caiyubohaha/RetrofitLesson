@@ -1,6 +1,8 @@
-package cyb.retrofitlesson;
+package cyb.servers;
 
 import cyb.bean.Result;
+import cyb.bean.UserInfo;
+import cyb.comm.InterfaceDate;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 import rx.Observable;

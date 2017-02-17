@@ -1,11 +1,11 @@
-package cyb.bean;
+package cyb.cookisutils;
 
 import android.webkit.CookieManager;
 import android.webkit.CookieSyncManager;
 
 import java.util.List;
 
-import cyb.retrofitlesson.InterfaceDate;
+import cyb.comm.InterfaceDate;
 import cyb.retrofitlesson.mApplication;
 import okhttp3.Cookie;
 import okhttp3.CookieJar;

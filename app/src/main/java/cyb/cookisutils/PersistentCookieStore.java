@@ -1,4 +1,4 @@
-package cyb.bean;
+package cyb.cookisutils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

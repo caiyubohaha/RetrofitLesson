@@ -1,4 +1,4 @@
-package cyb.bean;
+package cyb.cookisutils;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;

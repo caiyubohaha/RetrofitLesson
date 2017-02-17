@@ -3,6 +3,8 @@ package cyb.retrofitlesson;
 import android.app.Application;
 import android.content.Context;
 
+import cyb.GreenDaoManager;
+
 /**
  * Created by user on 2017/2/16.
  */
@@ -20,8 +22,13 @@ public class mApplication extends Application{
         super.onCreate();
         instance= getApplicationContext();
         //initRetrofit();
+        GreenDaoManager.getInstance();
+    }
+
+    private void setupDatabase() {
 
     }
+
     /**初始化cookis**/
     private void initRetrofit() {
         /*OkHttpClient okHttpClient = new OkHttpClient.Builder()

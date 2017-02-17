@@ -1,10 +1,10 @@
-package cyb.bean;
+package cyb.cookisutils;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import cyb.retrofitlesson.InterfaceDate;
+import cyb.comm.InterfaceDate;
 import okhttp3.Cookie;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;

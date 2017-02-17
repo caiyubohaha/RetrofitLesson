@@ -1,4 +1,4 @@
-package cyb.retrofitlesson;
+package cyb.utils;
 
 public class Util {
 
