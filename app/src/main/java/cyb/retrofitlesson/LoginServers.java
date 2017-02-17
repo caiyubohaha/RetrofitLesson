@@ -11,7 +11,7 @@ import rx.Observable;
  */
 
 public interface LoginServers {
-    @POST("api/account/login")                //@Post@Get                     如果出现类似{name},就是占位符号。下面用@Path（）代替
+    @POST(InterfaceDate.LOGIN)                //@Post@Get                     如果出现类似{name},就是占位符号。下面用@Path（）代替
     Observable<Result<Login>> Login(
             @Query("customerid") String customerid ,
             @Query("userid") String userid ,

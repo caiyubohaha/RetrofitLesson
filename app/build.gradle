@@ -1,6 +1,12 @@
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao'
 apply plugin: 'com.jakewharton.butterknife'
+
+greendao {
+    schemaVersion 1
+    daoPackage 'com.cyb.greendao.gen'
+    targetGenDir 'src/main/java-gen'
+}
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"

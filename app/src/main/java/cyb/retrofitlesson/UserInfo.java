@@ -1,15 +1,14 @@
 package cyb.retrofitlesson;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import java.io.Serializable;
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * Created by user on 2017/2/16.
  */
-
-public class UserInfo implements Parcelable, Serializable {
+@Entity
+public class UserInfo  {
         /***
          * "ID": 21,
          * "CustomerKeyID": 7,
@@ -37,8 +36,8 @@ public class UserInfo implements Parcelable, Serializable {
          * "IsParentCustomer": true,
          * "UnReadDiaryCount": 18
          */
-
-        private int ID;
+        @Id
+        private Long ID;
         private int CustomerKeyID;
         private int DepartmentID;
         private String UserID;
@@ -82,337 +81,57 @@ public class UserInfo implements Parcelable, Serializable {
          **/
         private int UnReadSignCount;
 
+
+
+        @Generated(hash = 1421753115)
+        public UserInfo(Long ID, int CustomerKeyID, int DepartmentID, String UserID,
+                String CompanyNo, String departmentName, boolean IsUsing, String Email,
+                String Phone, String Sex, String Birthday, String Country, String State,
+                String Address, String ZIP, String ReMark, String APN,
+                boolean IsEmailVerify, int generatorLimit, String HeadImgUrl,
+                String Roles, boolean IsParentCustomer, String DisplayName,
+                String UserName, boolean IsManager, String companyName,
+                boolean IsAdminRole, int UnReadDiaryCount, int UnReadTaskCount,
+                int UnReadSignCount) {
+            this.ID = ID;
+            this.CustomerKeyID = CustomerKeyID;
+            this.DepartmentID = DepartmentID;
+            this.UserID = UserID;
+            this.CompanyNo = CompanyNo;
+            this.departmentName = departmentName;
+            this.IsUsing = IsUsing;
+            this.Email = Email;
+            this.Phone = Phone;
+            this.Sex = Sex;
+            this.Birthday = Birthday;
+            this.Country = Country;
+            this.State = State;
+            this.Address = Address;
+            this.ZIP = ZIP;
+            this.ReMark = ReMark;
+            this.APN = APN;
+            this.IsEmailVerify = IsEmailVerify;
+            this.generatorLimit = generatorLimit;
+            this.HeadImgUrl = HeadImgUrl;
+            this.Roles = Roles;
+            this.IsParentCustomer = IsParentCustomer;
+            this.DisplayName = DisplayName;
+            this.UserName = UserName;
+            this.IsManager = IsManager;
+            this.companyName = companyName;
+            this.IsAdminRole = IsAdminRole;
+            this.UnReadDiaryCount = UnReadDiaryCount;
+            this.UnReadTaskCount = UnReadTaskCount;
+            this.UnReadSignCount = UnReadSignCount;
+        }
+
+
+
+        @Generated(hash = 1279772520)
         public UserInfo() {
         }
 
-        public UserInfo(int ID) {
-            this.ID = ID;
-        }
-
-        public int getID() {
-            return ID;
-        }
-
-        public void setID(int ID) {
-            this.ID = ID;
-        }
-
-        public int getCustomerKeyID() {
-            return CustomerKeyID;
-        }
-
-        public void setCustomerKeyID(int customerKeyID) {
-            CustomerKeyID = customerKeyID;
-        }
-
-        public int getDepartmentID() {
-            return DepartmentID;
-        }
-
-        public void setDepartmentID(int departmentID) {
-            DepartmentID = departmentID;
-        }
-
-        public String getUserID() {
-            return UserID;
-        }
-
-        public void setUserID(String userID) {
-            UserID = userID;
-        }
-
-        public String getCompanyNo() {
-            return CompanyNo;
-        }
-
-        public void setCompanyNo(String companyNo) {
-            CompanyNo = companyNo;
-        }
-
-        public String getDepartmentName() {
-            return departmentName;
-        }
-
-        public void setDepartmentName(String departmentName) {
-            this.departmentName = departmentName;
-        }
-
-        public boolean isUsing() {
-            return IsUsing;
-        }
-
-        public void setUsing(boolean using) {
-            IsUsing = using;
-        }
-
-        public String getEmail() {
-            return Email;
-        }
-
-        public void setEmail(String email) {
-            Email = email;
-        }
-
-        public String getPhone() {
-            return Phone;
-        }
-
-        public void setPhone(String phone) {
-            Phone = phone;
-        }
-
-        public String getSex() {
-            return Sex;
-        }
-
-        public void setSex(String sex) {
-            Sex = sex;
-        }
-
-        public String getBirthday() {
-            return Birthday;
-        }
-
-        public void setBirthday(String birthday) {
-            Birthday = birthday;
-        }
-
-        public String getCountry() {
-            return Country;
-        }
-
-        public void setCountry(String country) {
-            Country = country;
-        }
-
-        public String getState() {
-            return State;
-        }
-
-        public void setState(String state) {
-            State = state;
-        }
-
-        public String getAddress() {
-            return Address;
-        }
-
-        public void setAddress(String address) {
-            Address = address;
-        }
-
-        public String getZIP() {
-            return ZIP;
-        }
-
-        public void setZIP(String ZIP) {
-            this.ZIP = ZIP;
-        }
-
-        public String getReMark() {
-            return ReMark;
-        }
-
-        public void setReMark(String reMark) {
-            ReMark = reMark;
-        }
-
-        public String getAPN() {
-            return APN;
-        }
-
-        public void setAPN(String APN) {
-            this.APN = APN;
-        }
-
-        public boolean isEmailVerify() {
-            return IsEmailVerify;
-        }
-
-        public void setEmailVerify(boolean emailVerify) {
-            IsEmailVerify = emailVerify;
-        }
-
-        public int getGeneratorLimit() {
-            return generatorLimit;
-        }
-
-        public void setGeneratorLimit(int generatorLimit) {
-            this.generatorLimit = generatorLimit;
-        }
-
-        public String getHeadImgUrl() {
-            return HeadImgUrl;
-        }
-
-        public void setHeadImgUrl(String headImgUrl) {
-            HeadImgUrl = headImgUrl;
-        }
-
-        public String getRoles() {
-            return Roles;
-        }
-
-        public void setRoles(String roles) {
-            Roles = roles;
-        }
-
-        public boolean isParentCustomer() {
-            return IsParentCustomer;
-        }
-
-        public void setParentCustomer(boolean parentCustomer) {
-            IsParentCustomer = parentCustomer;
-        }
-
-        public String getDisplayName() {
-            return DisplayName;
-        }
-
-        public void setDisplayName(String displayName) {
-            DisplayName = displayName;
-        }
-
-        public String getUserName() {
-            return UserName;
-        }
-
-        public void setUserName(String userName) {
-            UserName = userName;
-        }
-
-        public boolean isManager() {
-            return IsManager;
-        }
-
-        public void setManager(boolean manager) {
-            IsManager = manager;
-        }
-
-        public int getUnReadDiaryCount() {
-            return UnReadDiaryCount;
-        }
-
-        public void setUnReadDiaryCount(int unReadDiaryCount) {
-            UnReadDiaryCount = unReadDiaryCount;
-        }
-
-        public int getUnReadTaskCount() {
-            return UnReadTaskCount;
-        }
-
-        public void setUnReadTaskCount(int unReadTaskCount) {
-            UnReadTaskCount = unReadTaskCount;
-        }
-
-        public int getUnReadSignCount() {
-            return UnReadSignCount;
-        }
-
-        public void setUnReadSignCount(int unReadSignCount) {
-            UnReadSignCount = unReadSignCount;
-        }
-
-
-        public String getCompanyName() {
-            return companyName;
-        }
-
-        public void setCompanyName(String companyName) {
-            this.companyName = companyName;
-        }
-
-        public boolean isAdminRole() {
-            return IsAdminRole;
-        }
-
-        public void setAdminRole(boolean adminRole) {
-            IsAdminRole = adminRole;
-        }
-
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-
-        @Override
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeInt(this.ID);
-            dest.writeInt(this.CustomerKeyID);
-            dest.writeInt(this.DepartmentID);
-            dest.writeString(this.UserID);
-            dest.writeString(this.CompanyNo);
-            dest.writeString(this.departmentName);
-            dest.writeByte(this.IsUsing ? (byte) 1 : (byte) 0);
-            dest.writeString(this.Email);
-            dest.writeString(this.Phone);
-            dest.writeString(this.Sex);
-            dest.writeString(this.Birthday);
-            dest.writeString(this.Country);
-            dest.writeString(this.State);
-            dest.writeString(this.Address);
-            dest.writeString(this.ZIP);
-            dest.writeString(this.ReMark);
-            dest.writeString(this.APN);
-            dest.writeByte(this.IsEmailVerify ? (byte) 1 : (byte) 0);
-            dest.writeInt(this.generatorLimit);
-            dest.writeString(this.HeadImgUrl);
-            dest.writeString(this.Roles);
-            dest.writeByte(this.IsParentCustomer ? (byte) 1 : (byte) 0);
-            dest.writeString(this.DisplayName);
-            dest.writeString(this.UserName);
-            dest.writeByte(this.IsManager ? (byte) 1 : (byte) 0);
-            dest.writeString(this.companyName);
-            dest.writeByte(this.IsAdminRole ? (byte) 1 : (byte) 0);
-            dest.writeInt(this.UnReadDiaryCount);
-            dest.writeInt(this.UnReadTaskCount);
-            dest.writeInt(this.UnReadSignCount);
-        }
-
-        protected UserInfo(Parcel in) {
-            this.ID = in.readInt();
-            this.CustomerKeyID = in.readInt();
-            this.DepartmentID = in.readInt();
-            this.UserID = in.readString();
-            this.CompanyNo = in.readString();
-            this.departmentName = in.readString();
-            this.IsUsing = in.readByte() != 0;
-            this.Email = in.readString();
-            this.Phone = in.readString();
-            this.Sex = in.readString();
-            this.Birthday = in.readString();
-            this.Country = in.readString();
-            this.State = in.readString();
-            this.Address = in.readString();
-            this.ZIP = in.readString();
-            this.ReMark = in.readString();
-            this.APN = in.readString();
-            this.IsEmailVerify = in.readByte() != 0;
-            this.generatorLimit = in.readInt();
-            this.HeadImgUrl = in.readString();
-            this.Roles = in.readString();
-            this.IsParentCustomer = in.readByte() != 0;
-            this.DisplayName = in.readString();
-            this.UserName = in.readString();
-            this.IsManager = in.readByte() != 0;
-            this.companyName = in.readString();
-            this.IsAdminRole = in.readByte() != 0;
-            this.UnReadDiaryCount = in.readInt();
-            this.UnReadTaskCount = in.readInt();
-            this.UnReadSignCount = in.readInt();
-        }
-
-        public static final Creator<UserInfo> CREATOR = new Creator<UserInfo>() {
-            @Override
-            public UserInfo createFromParcel(Parcel source) {
-                return new UserInfo(source);
-            }
-
-            @Override
-            public UserInfo[] newArray(int size) {
-                return new UserInfo[size];
-            }
-        };
+    
 
         @Override
         public boolean equals(Object o) {
@@ -425,9 +144,364 @@ public class UserInfo implements Parcelable, Serializable {
 
         }
 
-        @Override
-        public int hashCode() {
-            return ID;
+
+
+        public Long getID() {
+            return this.ID;
+        }
+
+
+
+        public void setID(Long ID) {
+            this.ID = ID;
+        }
+
+
+
+        public int getCustomerKeyID() {
+            return this.CustomerKeyID;
+        }
+
+
+
+        public void setCustomerKeyID(int CustomerKeyID) {
+            this.CustomerKeyID = CustomerKeyID;
+        }
+
+
+
+        public int getDepartmentID() {
+            return this.DepartmentID;
+        }
+
+
+
+        public void setDepartmentID(int DepartmentID) {
+            this.DepartmentID = DepartmentID;
+        }
+
+
+
+        public String getUserID() {
+            return this.UserID;
+        }
+
+
+
+        public void setUserID(String UserID) {
+            this.UserID = UserID;
+        }
+
+
+
+        public String getCompanyNo() {
+            return this.CompanyNo;
+        }
+
+
+
+        public void setCompanyNo(String CompanyNo) {
+            this.CompanyNo = CompanyNo;
+        }
+
+
+
+        public String getDepartmentName() {
+            return this.departmentName;
+        }
+
+
+
+        public void setDepartmentName(String departmentName) {
+            this.departmentName = departmentName;
+        }
+
+
+
+        public boolean getIsUsing() {
+            return this.IsUsing;
+        }
+
+
+
+        public void setIsUsing(boolean IsUsing) {
+            this.IsUsing = IsUsing;
+        }
+
+
+
+        public String getEmail() {
+            return this.Email;
+        }
+
+
+
+        public void setEmail(String Email) {
+            this.Email = Email;
+        }
+
+
+
+        public String getPhone() {
+            return this.Phone;
+        }
+
+
+
+        public void setPhone(String Phone) {
+            this.Phone = Phone;
+        }
+
+
+
+        public String getSex() {
+            return this.Sex;
+        }
+
+
+
+        public void setSex(String Sex) {
+            this.Sex = Sex;
+        }
+
+
+
+        public String getBirthday() {
+            return this.Birthday;
+        }
+
+
+
+        public void setBirthday(String Birthday) {
+            this.Birthday = Birthday;
+        }
+
+
+
+        public String getCountry() {
+            return this.Country;
+        }
+
+
+
+        public void setCountry(String Country) {
+            this.Country = Country;
+        }
+
+
+
+        public String getState() {
+            return this.State;
+        }
+
+
+
+        public void setState(String State) {
+            this.State = State;
+        }
+
+
+
+        public String getAddress() {
+            return this.Address;
+        }
+
+
+
+        public void setAddress(String Address) {
+            this.Address = Address;
+        }
+
+
+
+        public String getZIP() {
+            return this.ZIP;
+        }
+
+
+
+        public void setZIP(String ZIP) {
+            this.ZIP = ZIP;
+        }
+
+
+
+        public String getReMark() {
+            return this.ReMark;
+        }
+
+
+
+        public void setReMark(String ReMark) {
+            this.ReMark = ReMark;
+        }
+
+
+
+        public String getAPN() {
+            return this.APN;
+        }
+
+
+
+        public void setAPN(String APN) {
+            this.APN = APN;
+        }
+
+
+
+        public boolean getIsEmailVerify() {
+            return this.IsEmailVerify;
+        }
+
+
+
+        public void setIsEmailVerify(boolean IsEmailVerify) {
+            this.IsEmailVerify = IsEmailVerify;
+        }
+
+
+
+        public int getGeneratorLimit() {
+            return this.generatorLimit;
+        }
+
+
+
+        public void setGeneratorLimit(int generatorLimit) {
+            this.generatorLimit = generatorLimit;
+        }
+
+
+
+        public String getHeadImgUrl() {
+            return this.HeadImgUrl;
+        }
+
+
+
+        public void setHeadImgUrl(String HeadImgUrl) {
+            this.HeadImgUrl = HeadImgUrl;
+        }
+
+
+
+        public String getRoles() {
+            return this.Roles;
+        }
+
+
+
+        public void setRoles(String Roles) {
+            this.Roles = Roles;
+        }
+
+
+
+        public boolean getIsParentCustomer() {
+            return this.IsParentCustomer;
+        }
+
+
+
+        public void setIsParentCustomer(boolean IsParentCustomer) {
+            this.IsParentCustomer = IsParentCustomer;
+        }
+
+
+
+        public String getDisplayName() {
+            return this.DisplayName;
+        }
+
+
+
+        public void setDisplayName(String DisplayName) {
+            this.DisplayName = DisplayName;
+        }
+
+
+
+        public String getUserName() {
+            return this.UserName;
+        }
+
+
+
+        public void setUserName(String UserName) {
+            this.UserName = UserName;
+        }
+
+
+
+        public boolean getIsManager() {
+            return this.IsManager;
+        }
+
+
+
+        public void setIsManager(boolean IsManager) {
+            this.IsManager = IsManager;
+        }
+
+
+
+        public String getCompanyName() {
+            return this.companyName;
+        }
+
+
+
+        public void setCompanyName(String companyName) {
+            this.companyName = companyName;
+        }
+
+
+
+        public boolean getIsAdminRole() {
+            return this.IsAdminRole;
+        }
+
+
+
+        public void setIsAdminRole(boolean IsAdminRole) {
+            this.IsAdminRole = IsAdminRole;
+        }
+
+
+
+        public int getUnReadDiaryCount() {
+            return this.UnReadDiaryCount;
+        }
+
+
+
+        public void setUnReadDiaryCount(int UnReadDiaryCount) {
+            this.UnReadDiaryCount = UnReadDiaryCount;
+        }
+
+
+
+        public int getUnReadTaskCount() {
+            return this.UnReadTaskCount;
+        }
+
+
+
+        public void setUnReadTaskCount(int UnReadTaskCount) {
+            this.UnReadTaskCount = UnReadTaskCount;
+        }
+
+
+
+        public int getUnReadSignCount() {
+            return this.UnReadSignCount;
+        }
+
+
+
+        public void setUnReadSignCount(int UnReadSignCount) {
+            this.UnReadSignCount = UnReadSignCount;
         }
 
 

@@ -1,7 +1,10 @@
 package cyb.retrofitlesson;
 
+import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -76,10 +79,14 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public Observable<Result<UserInfo>> call(Result<Login> loginResult) {
                         Constant.SESSION_ID=loginResult.getData().getSessionId();
+                        Log.i("8888","loginResult.getCode()="+loginResult.getCode());
                         if (loginResult.getCode()==1){
-                            Toast.makeText(MainActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(MainActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
                             return retrofit.create(GetUserinfoServers.class).getUserInfo(Constant.SESSION_ID,"0",
                                     Util.getSign("sessionId"+Constant.SESSION_ID+"id"+"0"));
+                        }else{
+                            //Toast.makeText(MainActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
+
                         }
                         return null;
                     }
@@ -87,7 +94,12 @@ public class MainActivity extends AppCompatActivity {
                 .subscribe(new Action1<Result<UserInfo>>() {
                     @Override
                     public void call(Result<UserInfo> userinfo) {
-
+                        Constant.userInfo = userinfo.getData();
+                            //存入数据库
+                        saveUserinfoToDB(userinfo);
+                            //启动登陆界面
+                        Intent intent = new Intent(MainActivity.this, Application.class);
+                        startActivity(intent);
                     }
                 }, new Action1<Throwable>() {
                     @Override
@@ -97,5 +109,9 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    private void saveUserinfoToDB(Result<UserInfo> userinfo) {
+
     }
 }
