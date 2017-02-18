@@ -25,4 +25,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <Button
+        android:text="打开下一界面"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tv_message"
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_below="@id/btn"
+        android:id="@+id/tv_Eventbus"
+        android:text="Event——bus"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
 </RelativeLayout>

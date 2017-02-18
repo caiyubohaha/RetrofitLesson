@@ -8,14 +8,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jakewharton.rxbinding.view.RxView;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cyb.bean.FirstEvent;
 import cyb.bean.Login;
 import cyb.bean.Result;
 import cyb.bean.UserInfo;
@@ -47,33 +52,36 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.btn_login)
     Button btnLogin;
     ListView lv;
-    String companyid=null;
-    String userid=null;
-    String password=null;
+    String companyid = null;
+    String userid = null;
+    String password = null;
+    @BindView(R.id.tv_Eventbus)
+    TextView tvEventbus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        EventBus.getDefault().register(this);
         ButterKnife.bind(this);
         initEvent();
 
         final Retrofit retrofit = NetWorkUtils.getRetrofit();
 
-        Observable<Result<Login>> call= (Observable<Result<Login>>) retrofit.create(LoginServers.class).Login("001",
-                "Android001","111111","1",
-                Util.getSign("customerid"+"001"+"userid"+
-                        "Android001"+"password"+"111111"));
+        Observable<Result<Login>> call = (Observable<Result<Login>>) retrofit.create(LoginServers.class).Login("001",
+                "Android001", "111111", "1",
+                Util.getSign("customerid" + "001" + "userid" +
+                        "Android001" + "password" + "111111"));
         call.flatMap(new Func1<Result<Login>, Observable<Result<UserInfo>>>() {
             @Override
             public Observable<Result<UserInfo>> call(Result<Login> loginResult) {
-                Constant.SESSION_ID=loginResult.getData().getSessionId();
-                Log.i("8888","loginResult.getCode()="+loginResult.getCode());
-                if (loginResult.getCode()==1){
+                Constant.SESSION_ID = loginResult.getData().getSessionId();
+                Log.i("8888", "loginResult.getCode()=" + loginResult.getCode());
+                if (loginResult.getCode() == 1) {
                     //Toast.makeText(MainActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                    return retrofit.create(GetUserinfoServers.class).getUserInfo(Constant.SESSION_ID,"0",
-                            Util.getSign("sessionId"+Constant.SESSION_ID+"id"+"0"));
-                }else{
+                    return retrofit.create(GetUserinfoServers.class).getUserInfo(Constant.SESSION_ID, "0",
+                            Util.getSign("sessionId" + Constant.SESSION_ID + "id" + "0"));
+                } else {
                     Toast.makeText(MainActivity.this, "登录失败", Toast.LENGTH_SHORT).show();
 
                 }
@@ -89,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
                         //启动登陆界面
 
 
-                        Intent intent = new Intent(MainActivity.this,UserInfoActivity.class);
+                        Intent intent = new Intent(MainActivity.this, UserInfoActivity.class);
                         startActivity(intent);
                     }
                 }, new Action1<Throwable>() {
@@ -102,15 +110,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initEvent() {
-        Observable<Void> observable =  RxView.clicks(btnLogin).share();
-        Subscription subscription= observable.throttleFirst(2, TimeUnit.SECONDS).subscribe(new Action1<Void>() {
+        Observable<Void> observable = RxView.clicks(btnLogin).share();
+        Subscription subscription = observable.throttleFirst(2, TimeUnit.SECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
                 Toast.makeText(MainActivity.this, "正在登录", Toast.LENGTH_SHORT).show();
             }
         });
 
-        Subscription subscription2=observable.throttleFirst(2, TimeUnit.SECONDS).subscribe(new Action1<Void>() {
+        Subscription subscription2 = observable.throttleFirst(2, TimeUnit.SECONDS).subscribe(new Action1<Void>() {
             @Override
             public void call(Void aVoid) {
                 // Toast.makeText(MainActivity.this, "点击了登录2", Toast.LENGTH_SHORT).show();
@@ -163,6 +171,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
 
-
+    @Subscribe
+    public void onEventMainThread(FirstEvent event) {
+        tvEventbus.setText(event.getText());
+        Toast.makeText(this, this.getClass().getName()+"收到", Toast.LENGTH_SHORT).show();
+    }
 }
