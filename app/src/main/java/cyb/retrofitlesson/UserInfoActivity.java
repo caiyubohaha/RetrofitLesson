@@ -14,18 +14,15 @@ import com.bumptech.glide.Glide;
 import com.greendao.UserInfoDaoUtils;
 import com.jakewharton.rxbinding.view.RxView;
 
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cyb.bean.FirstEvent;
 import cyb.bean.UserInfo;
 import cyb.comm.InterfaceDate;
 import cyb.utils.GlideRoundTransform;
+import cyb.utils.RxBus;
 import rx.functions.Action1;
 
 public class UserInfoActivity extends AppCompatActivity {
@@ -47,7 +44,8 @@ public class UserInfoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_info);
-        EventBus.getDefault().register(this);
+        //EventBus.getDefault().register(this);
+        RxBus.getDefault().register(this);
         ButterKnife.bind(this);
         getuserinfo();
         initEvent();
@@ -85,7 +83,8 @@ public class UserInfoActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
+        //EventBus.getDefault().unregister(this);
+        RxBus.getDefault().unregister(this);
     }
 
     /*public void onEventMainThread(FirstEvent event){
@@ -93,11 +92,11 @@ public class UserInfoActivity extends AppCompatActivity {
         tvEventbus.setText(event.getText());
     }*/
 
-    @Subscribe
+    /*@Subscribe
     public void onEventMainThread(FirstEvent event){
-        Toast.makeText(this, "UserInfoActivity收到消息"+event.getText(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "UserInfoActivity收到消息"+event, Toast.LENGTH_SHORT).show();
         tvEventbus.setText(event.getText());
-    }
+    }*/
 
 }
 

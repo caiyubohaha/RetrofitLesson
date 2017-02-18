@@ -11,10 +11,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.hwangjr.rxbus.annotation.Subscribe;
 import com.jakewharton.rxbinding.view.RxView;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
 
 import java.util.concurrent.TimeUnit;
 
@@ -28,6 +26,7 @@ import cyb.comm.Constant;
 import cyb.cookisutils.NetWorkUtils;
 import cyb.servers.GetUserinfoServers;
 import cyb.servers.LoginServers;
+import cyb.utils.RxBus;
 import cyb.utils.Util;
 import retrofit2.Retrofit;
 import rx.Observable;
@@ -62,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        EventBus.getDefault().register(this);
+       // EventBus.getDefault().register(this);
+        RxBus.getDefault().register(this);
         ButterKnife.bind(this);
         initEvent();
 
@@ -174,12 +174,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        EventBus.getDefault().unregister(this);
+        //EventBus.getDefault().unregister(this);
+        RxBus.getDefault().unregister(this);
     }
 
     @Subscribe
-    public void onEventMainThread(FirstEvent event) {
-        tvEventbus.setText(event.getText());
+    public void eat(FirstEvent s) {
+        tvEventbus.setText(s.getText());
         Toast.makeText(this, this.getClass().getName()+"收到", Toast.LENGTH_SHORT).show();
     }
 }

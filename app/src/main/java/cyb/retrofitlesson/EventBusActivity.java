@@ -7,13 +7,12 @@ import android.widget.RelativeLayout;
 
 import com.jakewharton.rxbinding.view.RxView;
 
-import org.greenrobot.eventbus.EventBus;
-
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cyb.bean.FirstEvent;
+import cyb.utils.RxBus;
 import rx.functions.Action1;
 
 public class EventBusActivity extends AppCompatActivity {
@@ -33,7 +32,8 @@ public class EventBusActivity extends AppCompatActivity {
             public void call(Void aVoid) {
                 //改变文字
                 FirstEvent firstEvent = new FirstEvent("改变吧，大傻逼");
-                EventBus.getDefault().post(firstEvent);
+                //EventBus.getDefault().post(firstEvent);
+                RxBus.getDefault().post(firstEvent);
             }
         });
     }

@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".UserInfoActivity" />
-        <activity android:name=".EventBusActivity"></activity>
+        <activity android:name=".EventBusActivity" />
+        <activity android:name=".RxBusActivity"></activity>
     </application>
 
 </manifest>
