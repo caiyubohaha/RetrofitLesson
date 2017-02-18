@@ -326,4 +326,42 @@ public class UserInfo {
         this.IsAdminRole = IsAdminRole;
     }
 
+    @Override
+    public String toString() {
+        return "UserInfo{" +
+                "ID=" + ID +
+                ", CustomerKeyID=" + CustomerKeyID +
+                ", DepartmentID=" + DepartmentID +
+                ", UserID='" + UserID + '\'' +
+                ", CompanyNo='" + CompanyNo + '\'' +
+                ", departmentName='" + departmentName + '\'' +
+                ", companyName='" + companyName + '\'' +
+                ", IsUsing=" + IsUsing +
+                ", UserName='" + UserName + '\'' +
+                ", Email='" + Email + '\'' +
+                ", Phone='" + Phone + '\'' +
+                ", Sex='" + Sex + '\'' +
+                ", Birthday='" + Birthday + '\'' +
+                ", DisplayName='" + DisplayName + '\'' +
+                ", Country='" + Country + '\'' +
+                ", State='" + State + '\'' +
+                ", Address='" + Address + '\'' +
+                ", ZIP='" + ZIP + '\'' +
+                ", ReMark='" + ReMark + '\'' +
+                ", APN='" + APN + '\'' +
+                ", IsEmailVerify=" + IsEmailVerify +
+                ", generatorLimit=" + generatorLimit +
+                ", HeadImgUrl='" + HeadImgUrl + '\'' +
+                ", Roles='" + Roles + '\'' +
+                ", Positions='" + Positions + '\'' +
+                ", IsParentCustomer=" + IsParentCustomer +
+                ", IsFriend=" + IsFriend +
+                ", DueTime='" + DueTime + '\'' +
+                ", UnReadDiaryCount=" + UnReadDiaryCount +
+                ", UnReadTaskCount=" + UnReadTaskCount +
+                ", UnReadSignCount=" + UnReadSignCount +
+                ", IsManager=" + IsManager +
+                ", IsAdminRole=" + IsAdminRole +
+                '}';
+    }
 }
