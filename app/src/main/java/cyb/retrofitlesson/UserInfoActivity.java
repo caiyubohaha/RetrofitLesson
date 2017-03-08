@@ -23,7 +23,9 @@ import cyb.bean.UserInfo;
 import cyb.comm.InterfaceDate;
 import cyb.utils.GlideRoundTransform;
 import cyb.utils.RxBus;
+import rx.Observable;
 import rx.functions.Action1;
+import rx.functions.Func0;
 
 public class UserInfoActivity extends AppCompatActivity {
 
@@ -49,6 +51,14 @@ public class UserInfoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         getuserinfo();
         initEvent();
+        Observable.defer(new Func0<Observable<String>>() {
+
+            @Override
+            public Observable<String> call() {
+                return Observable.just("");
+            }
+        });
+
 
 
     }
@@ -61,6 +71,10 @@ public class UserInfoActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
+
     }
 
     public void getuserinfo() {
