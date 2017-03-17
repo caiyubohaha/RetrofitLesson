@@ -2,7 +2,6 @@ package cyb.retrofitlesson;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 
 import com.hwangjr.rxbus.annotation.Subscribe;
 import com.jakewharton.rxbinding.view.RxView;
+import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import java.util.concurrent.TimeUnit;
 
@@ -38,7 +38,7 @@ import rx.schedulers.Schedulers;
 
 import static com.greendao.UserInfoDaoUtils.insertOrReplaceUserinfo;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends RxAppCompatActivity {
 
     @BindView(R.id.et_company_id)
     EditText etCompanyId;
@@ -67,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
         initEvent();
 
         final Retrofit retrofit = NetWorkUtils.getRetrofit();
+
+
 
         Observable<Result<Login>> call = (Observable<Result<Login>>) retrofit.create(LoginServers.class).Login("001",
                 "Android001", "111111", "1",
